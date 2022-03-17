@@ -1,0 +1,9 @@
+Summary, Assignee, Reporter, Issue Type, Description, Priority, Story Points, Epic Link
+"[prometeo-utils] - Agregar modulo de http", , vscafati@prometeoapi.com, Task, "
+En este submodulo se encontrarán el cliente HTTP con las operaciones que comunmente se encuentran en Prometeo.
+
+**Acceptance Criteria:**
+- {code}session{code}, que contendrá las clases para manejar diferentes modelos de sessión (Cookie, Bearer Token, etc).
+- {code}client{code}, que contendrá las clases para realizar peticiones HTTP, modulo de retries, etc. 
+- {code}response{code, que contendrá las clases para parsear diferentes tipos de responses (json, html, etc).
+", , 99, DEV-961

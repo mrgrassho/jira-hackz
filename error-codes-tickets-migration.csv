@@ -1,0 +1,13 @@
+Summary, Assignee, Reporter, Issue Type, Description, Priority, Story Points, Epic Link
+"[Banking] - Migrar codigos de error data - PROVIDER", , vscafati@prometeoapi.com, Task, "
+Como usuario de prometeo, quiero recibir errores mas descriptivos a la hora de interacturar la API. Por lo que se desarrollo una mejora sobre los errores retornados para que cumplan dicho proposito.
+
+*Acceptance Criteria:*
+* Migrar códigos de error de los endpoints de datos para el provider {{PROVIDER}}. Los cuales comprenden:
+** {{/login}}, inicio de sesión.
+** {{/account}}, cuentas.
+** {{/account/\{account-id\}}}, movimientos de cuentas.
+** {{/info}}, información personal.
+** {{/credit-cards}}, tarjetas de credito
+** {{/credit-cards/\{credit-card-id\}}}, movimientos de tarjeta de credito.
+", , 2, DEV-966

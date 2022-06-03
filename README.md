@@ -1,2 +1,6 @@
-# jira
-Scripts para armar tickets de jira y ejemplos de CSV
+### JIRA Hackss
+
+En este repo tiramos hacks piolas para automatizar operaciones aburridas de JIRA:
+
+- Bulk Ticket Creation
+- Fix Version Generator - Commandline tool

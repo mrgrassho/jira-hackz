@@ -19,25 +19,16 @@ MAJOR_RELEASE_DESC = os.environ.get('MAJOR_RELEASE_DESC', "Release y Bugs")
 MINOR_RELEASE_DESC = os.environ.get('MINOR_RELEASE_DESC', "Bugs")
 
 
-class Choice(enum.Enum):
-    def __str__(self):
-        return self.name
-
-    @staticmethod
-    def from_string(s):
-        try:
-            return Choice[s]
-        except KeyError:
-            raise ValueError()
-
-
-class Frequency(Choice):
+class Frequency(enum.Enum):
     WEEKLY = {'freq': rrule.DAILY, 'interval': 7}
     EVERY_TWO_WEEKS = {'freq': rrule.DAILY, 'interval': 14}
     MONTHLY = {'freq': rrule.DAILY, 'interval': 30}
 
+    def __str__(self):
+        return self.name
 
-class WeekDay(Choice):
+
+class WeekDay(enum.Enum):
     MONDAY = rrule.MO
     TUESDAY = rrule.TU
     WEDNESDAY = rrule.WE
@@ -45,6 +36,9 @@ class WeekDay(Choice):
     FRIDAY = rrule.FR
     SATURDAY = rrule.SA
     SUNDAY = rrule.SU
+
+    def __str__(self):
+        return self.name
 
 
 class VersionNumber:
@@ -124,9 +118,9 @@ def main():
     parser.add_argument('start_date', type=str, help="Specify fix version start date. Format YYYYMMDD")
     parser.add_argument('end_date', type=str, help="Specify fix version end date. Format YYYYMMDD")
     parser.add_argument('version', type=str, help="Specify fix version number. Following this format: 'Feature.Mayor.Minor'. Example: 1.1.0")
-    parser.add_argument('-f', '--freq', type=Frequency.from_string, choices=list(Frequency), help="Specify the frequency of release.", default=Frequency.WEEKLY)
-    parser.add_argument('-ma', '--major', type=WeekDay.from_string, choices=list(WeekDay), help="Specify the weekday of major release.", default=WeekDay.MONDAY)
-    parser.add_argument('-mi', '--minor', type=WeekDay.from_string, choices=list(WeekDay), help="Specify the weekday of minor release.", default=WeekDay.THURSDAY)
+    parser.add_argument('-f', '--freq', type=lambda s: Frequency[s], choices=list(Frequency), help="Specify the frequency of release.", default=Frequency.WEEKLY)
+    parser.add_argument('-ma', '--major', type=lambda s: WeekDay[s], choices=list(WeekDay), help="Specify the weekday of major release.", default=WeekDay.MONDAY)
+    parser.add_argument('-mi', '--minor', type=lambda s: WeekDay[s], choices=list(WeekDay), help="Specify the weekday of minor release.", default=WeekDay.THURSDAY)
     args = parser.parse_args()
     c = FixVersionCreator(
         args.jira_project,

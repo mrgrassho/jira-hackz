@@ -29,3 +29,9 @@ optional arguments:
   -mi {MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY}, --minor {MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY}
                         Specify the weekday of minor release. (default: THURSDAY)
 ```
+
+## Example
+
+```bash
+./fix_version_gen.py DEV 2022-08-01 2022-09-01 1.12.0 -f WEEKLY
+```
